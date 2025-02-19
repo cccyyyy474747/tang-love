@@ -2,13 +2,14 @@ let yesButton = document.getElementById("yes");
 let noButton = document.getElementById("no");
 let questionText = document.getElementById("question");
 let mainImage = document.getElementById("mainImage");
+let clickableYes = document.getElementById("clickableYes");
 
 const params = new URLSearchParams(window.location.search);
 let username = params.get("name");
 
 // 限制用户名长度，避免页面样式崩坏
 const maxLength = 20;
-const safeUsername = username ? username.substring(0, maxLength) : "???";
+const safeUsername = username ? username.substring(0, maxLength) : "???" ;
 
 // 防止 `null` 变成 `"null"`
 if (username) {
@@ -56,12 +57,8 @@ noButton.addEventListener("click", function () {
   if (clickCount >= 5) mainImage.src = "images/crying.png"; // 之后一直是哭
 });
 
-// Yes 按钮点击后，进入表白成功页面
-const loveTest = `!!!嘿嘿，喜欢你!! ( >᎑<)♡︎ᐝ  ${
-  username ? `${safeUsername}  ♡︎ᐝ(>᎑< )` : ""
-}`;
-
-yesButton.addEventListener("click", function () {
+// 共享的点击处理函数
+function handleYesClick() {
   // 先创建基础 HTML 结构
   document.body.innerHTML = `
         <div class="yes-screen">
@@ -71,8 +68,18 @@ yesButton.addEventListener("click", function () {
     `;
 
   // 确保用户名安全地插入
+  const loveTest = `!!!嘿嘿，喜欢你!! ( >᎑<)♡︎ᐝ  ${
+    username ? `${safeUsername}  ♡︎ᐝ(>᎑< )` : ""
+  }`;
+
   document.querySelector(".yes-text").innerText = loveTest;
 
   // 禁止滚动，保持页面美观
   document.body.style.overflow = "hidden";
-});
+}
+
+// Yes 按钮点击后，进入表白成功页面
+yesButton.addEventListener("click", handleYesClick);
+
+// 标题中的“可以”文字点击后，进入表白成功页面
+clickableYes.addEventListener("click", handleYesClick);
