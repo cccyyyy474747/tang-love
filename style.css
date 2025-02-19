@@ -25,6 +25,7 @@ h1 {
     font-size: 5vw; /* 字体大小根据视口宽度变化 */
     color: #68495b;
     margin: 20px 0; /* 增加上下间距 */
+    font-family: 'Arial', sans-serif;  /* 确保字体一致 */
 }
 
 button {
@@ -110,11 +111,13 @@ button {
 #clickableYes {
   background: none;
   border: none;
-  color: inherit;  /* 保持颜色一致 */
-  font-size: inherit;  /* 保持字体大小一致 */
-  font-family: inherit;  /* 保持字体一致 */
+  color: #68495b;  /* 继承父元素的颜色 */
+  font-size: inherit;  /* 继承父元素的字体大小 */
+  font-family: inherit;  /* 继承父元素的字体 */
   cursor: pointer;
-  padding: 0;  /* 去掉默认内边距 */
+  padding: 0;  /* 去掉按钮的默认内边距 */
+  line-height: inherit;  /* 使按钮和文字的行高一致 */
+  text-align: inherit;  /* 使按钮的文本对齐方式一致 */
 }
 
 #clickableYes:focus {
