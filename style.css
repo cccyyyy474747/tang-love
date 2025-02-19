@@ -106,3 +106,17 @@ button {
         width: 300px; /* 固定图片宽度 */
     }
 }
+
+#clickableYes {
+  background: none;
+  border: none;
+  color: inherit;  /* 保持颜色一致 */
+  font-size: inherit;  /* 保持字体大小一致 */
+  font-family: inherit;  /* 保持字体一致 */
+  cursor: pointer;
+  padding: 0;  /* 去掉默认内边距 */
+}
+
+#clickableYes:focus {
+  outline: none;  /* 去掉点击时的边框 */
+}
